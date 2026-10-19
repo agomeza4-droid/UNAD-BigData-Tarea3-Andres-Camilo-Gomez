@@ -1,0 +1,32 @@
+# Tarea 3 - Procesamiento de Datos con Apache Spark y Apache Kafka
+
+## Descripción del Proyecto
+Este repositorio contiene la solución práctica para la **Tarea 3: Procesamiento de Datos con Apache Spark** del curso de **Big Data** de la Universidad Nacional Abierta y a Distancia (UNAD).
+
+El proyecto implementa una solución de análisis de datos tanto en **lote (Batch)** como en **tiempo real (Streaming)** utilizando el conjunto de datos de la UCI: **Individual Household Electric Power Consumption**.
+
+---
+
+## Conjunto de Datos
+* **Fuente:** UCI Machine Learning Repository - Individual Household Electric Power Consumption
+* **Descripción:** Registro de mediciones de consumo de energía eléctrica de un hogar.
+* **Mapeo de Variables en Tiempo Real:** Para mantener la compatibilidad con el consumidor de Spark Streaming, la variable `temperature` mapea la Potencia Activa Global (`Global_active_power`) y `humidity` mapea el Voltaje (`Voltage`).
+
+---
+
+## Estructura del Repositorio
+
+| Archivo | Descripción |
+| :--- | :--- |
+| `batch_processing.py` | Script en PySpark para la carga, limpieza, análisis exploratorio (EDA) por hora del día y generación de la gráfica de consumo. |
+| `kafka_producer.py` | Productor en Python que lee el dataset de la UCI y transmite los registros en tiempo real hacia Kafka. |
+| `spark_streaming_consumer.py` | Aplicación de Spark Streaming que consume el flujo de datos de Kafka y procesa los micro-lotes por ventanas de tiempo. |
+| `resultado_batch_consumo_hora.png` | Gráfica resultante del procesamiento en batch con el patrón de consumo diario. |
+
+---
+
+## Instrucciones de Ejecución
+
+### 1. Procesamiento en Batch (PySpark)
+```bash
+spark-submit batch_processing.py
